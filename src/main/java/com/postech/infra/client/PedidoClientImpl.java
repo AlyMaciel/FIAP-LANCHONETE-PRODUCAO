@@ -6,20 +6,19 @@ import com.postech.infra.dto.client.pedido.PedidoResponseDTO;
 import org.springframework.web.reactive.function.client.WebClient;
 
 public class PedidoClientImpl implements PedidoClient {
-
-    private final WebClient webClient;
     private final String pedidoUrl;
 
-    public PedidoClientImpl(WebClient webClient, String pedidoUrl) {
-        this.webClient = webClient;
+    public PedidoClientImpl(String pedidoUrl) {
         this.pedidoUrl = pedidoUrl;
     }
 
     @Override
     public EstadoPedidoEnum consultarStatusPedido(Long pedidoId) {
         PedidoResponseDTO response;
+
         try {
-            response = webClient
+            response = WebClient.builder()
+                    .baseUrl(pedidoUrl).build()
                     .get()
                     .uri(pedidoUrl + "/" + pedidoId)
                     .retrieve()
@@ -30,7 +29,6 @@ public class PedidoClientImpl implements PedidoClient {
                 return response.estado();
             }
         } catch (Exception ignore) {
-            return null;
         }
 
         return null;
@@ -38,7 +36,8 @@ public class PedidoClientImpl implements PedidoClient {
 
     @Override
     public void atualizarEstadoPorPedidoId(Long pedidoId, EstadoPedidoEnum estadoPedidoEnum) {
-        webClient
+        WebClient.builder()
+                .baseUrl(pedidoUrl).build()
                 .patch()
                 .uri(pedidoUrl + "/" + pedidoId + "/estado?estado=" + estadoPedidoEnum.name())
                 .retrieve()

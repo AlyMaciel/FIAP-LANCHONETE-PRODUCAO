@@ -10,7 +10,6 @@ import org.mapstruct.Mapper;
 public interface ProducaoMapper {
 
     ProducaoEntity paraEntidade(Producao producao);
-
     Producao paraDominio(ProducaoEntity clienteEntity);
     IniciarPreparoResponseDTO paraIniciarPreparoDTO(Producao producao);
     FinalizarPreparoResponseDTO paraFinalizarPreparoDTO(Producao producao);

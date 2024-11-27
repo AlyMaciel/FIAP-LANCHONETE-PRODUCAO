@@ -1,23 +1,11 @@
 package com.postech.infra.dto.client.pedido;
 
+public record PedidoProdutoResponseDTO(
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+        Long id,
+        PedidoResponseDTO pedido,
+        ProdutoResponseDTO produto,
+        Integer quantidade
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class PedidoProdutoResponseDTO {
-
-    private Long id;
-
-    @JsonIgnore
-    private PedidoResponseDTO pedido;
-
-    private ProdutoResponseDTO produto;
-
-    private int quantidade;
-
+) {
 }

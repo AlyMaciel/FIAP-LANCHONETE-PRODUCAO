@@ -14,7 +14,4 @@ public enum EstadoPedidoEnum {
         this.ordem = ordem;
     }
 
-    public Integer getOrdem() {
-        return ordem;
-    }
 }

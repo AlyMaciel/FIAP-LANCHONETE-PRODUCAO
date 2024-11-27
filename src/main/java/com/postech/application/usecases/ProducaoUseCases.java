@@ -47,13 +47,7 @@ public class ProducaoUseCases {
             throw new PedidoException(ErroPedidoEnum.ESTADO_INVALIDO);
         }
 
-        var producao = repositorio.salvar(producaoRequest);
-
-        if (producao == null) {
-            throw new ProducaoException(ErroProducaoEnum.ERRO_NA_CRIACAO);
-        }
-
-        return producao;
+        return repositorio.salvar(producaoRequest);
     }
 
     public Producao finalizarProducao(Long pedidoId) {
@@ -62,9 +56,6 @@ public class ProducaoUseCases {
 
         if (producao == null) {
             throw new ProducaoException(ErroProducaoEnum.PREPARACAO_NAO_INICIADA);
-        }
-        if (producao.getStatus() != EstadoProducaoEnum.PREPARANDO) {
-            throw new ProducaoException(ErroProducaoEnum.PREPARACAO_JA_FINALIZADA);
         }
 
         var status = pedidoClient.consultarStatusPedido(pedidoId);

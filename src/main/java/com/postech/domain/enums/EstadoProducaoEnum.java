@@ -12,7 +12,4 @@ public enum EstadoProducaoEnum {
         this.ordem = ordem;
     }
 
-    public Integer getOrdem() {
-        return ordem;
-    }
 }

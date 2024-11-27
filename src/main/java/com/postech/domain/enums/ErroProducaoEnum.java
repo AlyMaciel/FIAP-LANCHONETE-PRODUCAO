@@ -1,7 +1,6 @@
 package com.postech.domain.enums;
 
 public enum ErroProducaoEnum {
-    ERRO_NA_CRIACAO(500, "Erro na criação do item para produção"),
     PREPARO_INVALIDO(400, "Pedido já se encontra em status de preparação ou já foi finalizado"),
     PREPARACAO_NAO_INICIADA(400, "Pedido não iniciou a preparação"),
     PREPARACAO_JA_FINALIZADA(400, "Preparação do pedido já foi finalizada");
